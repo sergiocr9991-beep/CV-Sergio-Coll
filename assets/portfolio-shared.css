@@ -1,0 +1,12 @@
+/* Shared ES/EN background: its own stacking context keeps fixed layers visible. */
+body{isolation:isolate;background:#f8fafc;}
+body::before{display:block!important;content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(circle at 10% 8%,rgba(37,99,235,.14),transparent 30%),radial-gradient(circle at 84% 12%,rgba(6,182,212,.15),transparent 28%),radial-gradient(circle at 76% 82%,rgba(45,53,145,.1),transparent 34%),linear-gradient(135deg,#f8fafc,#edf2f7 58%,#e6ebf2);}
+body::after{display:block!important;content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(15,23,42,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.045) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(to bottom,#000,rgba(0,0,0,.3),transparent 90%);}
+#signature-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#fff 0%,#f1f6fc 60%,#e7f1fc 100%);isolation:isolate;pointer-events:none;animation:signature-fallback 0s 1.5s forwards;}
+.signature-intro-inner{display:flex;flex-direction:column;align-items:center;gap:22px}
+.signature-intro-seal{width:clamp(188px,48vw,240px);aspect-ratio:1;border:2px solid transparent;border-radius:50%;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#2d3591 15%,#2563eb 58%,#06b6d4) border-box;box-shadow:0 12px 34px rgba(45,53,145,.13);display:flex;align-items:center;justify-content:center}
+.signature-intro-ink{width:94%;height:auto;display:block}
+.signature-intro-wordmark{margin:0;color:#2d3591;font-family:"Space Grotesk",Inter,system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.ink-gesture{stroke-dasharray:100 100;stroke-dashoffset:100}
+@keyframes signature-fallback{to{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){#signature-intro{display:none!important}}
