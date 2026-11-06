@@ -38,18 +38,18 @@ footer{background:rgba(255,255,255,.76);backdrop-filter:none!important;-webkit-b
 @media(prefers-reduced-motion:reduce){.lang-option{transition:none}}
 </style><style id="signature-intro-styles">
 /* Firma de entrada: animacion de carga sin listeners ni operaciones por scroll */
-#signature-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#ffffff 0%,#f1f6fc 60%,#e7f1fc 100%);animation:signature-intro-leave .32s ease-in-out 1.48s forwards;isolation:isolate}
+#signature-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#ffffff 0%,#f1f6fc 60%,#e7f1fc 100%);animation:signature-intro-leave .22s ease-in-out 1.28s forwards;isolation:isolate}
 .signature-intro-inner{display:flex;flex-direction:column;align-items:center;gap:22px}
 .signature-intro-seal{width:clamp(188px,48vw,240px);aspect-ratio:1;border:2px solid transparent;border-radius:50%;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(135deg,#2d3591 15%,#2563eb 58%,#06b6d4) border-box;box-shadow:0 12px 34px rgba(45,53,145,.13);display:flex;align-items:center;justify-content:center;animation:signature-seal-enter .42s cubic-bezier(.2,.8,.2,1) both}
-.signature-intro-ink{width:94%;height:auto;display:block;animation:signature-ink-write 1.08s cubic-bezier(.34,0,.18,1) .2s both}
-.signature-intro-wordmark{margin:0;color:#2d3591;font-family:"Space Grotesk",Inter,system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;animation:signature-wordmark-enter .4s ease-out .84s both}
+.signature-intro-ink{width:94%;height:auto;display:block;}
+.signature-intro-wordmark{margin:0;color:#2d3591;font-family:"Space Grotesk",Inter,system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;animation:signature-wordmark-enter .32s ease-out .88s both}
 @keyframes signature-seal-enter{from{opacity:0;transform:translateY(8px) scale(.965)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes signature-ink-write{0%{clip-path:inset(0 100% 0 0);opacity:1}14%{clip-path:inset(0 91% 0 0)}35%{clip-path:inset(0 67% 0 0)}65%{clip-path:inset(0 30% 0 0)}100%{clip-path:inset(0 0 0 0);opacity:1}}
+
 @keyframes signature-wordmark-enter{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 @keyframes signature-intro-leave{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}100%{opacity:0;visibility:hidden}}
 @media(prefers-reduced-motion:reduce){#signature-intro{display:none!important}}
 </style></head><body>
-<div id="signature-intro" aria-hidden="true"><div class="signature-intro-inner"><div class="signature-intro-seal"><img class="signature-intro-ink" src="../assets/firma-sergio.svg" width="620" height="365" alt="" decoding="sync" fetchpriority="high"></div><p class="signature-intro-wordmark">SERGIO COLL</p></div></div>
+<div id="signature-intro" aria-hidden="true"><div class="signature-intro-inner"><div class="signature-intro-seal"><img class="signature-intro-ink" src="../assets/firma-sergio.svg?v=2" width="620" height="365" alt="" decoding="sync" fetchpriority="high"></div><p class="signature-intro-wordmark">SERGIO COLL</p></div></div>
 
 <div class="blob b1"></div><div class="blob b2"></div><div class="progress" id="progress"></div>
 <nav><div class="wrap nav-inner"><a class="logo" href="#inicio"><span class="mark">SC</span><span>SERGIO COLL</span></a><div class="nav-links"><a href="#perfil">About</a><a href="#experiencia">Experience</a><a href="#proyectos">Projects</a><a href="#educacion">Education</a></div><div class="nav-actions"><div class="language-switch" role="group" aria-label="Choose language"><a class="lang-option" href="../" lang="es" aria-label="Switch to Spanish">Spanish</a><a class="lang-option is-current" href="./" lang="en" aria-current="page" aria-label="English, current language">English</a></div><a class="nav-cta" href="#contacto">Contact</a></div></div></nav>
