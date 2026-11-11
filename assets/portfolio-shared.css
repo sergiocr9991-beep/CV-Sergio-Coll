@@ -63,3 +63,26 @@ section[id],footer[id]{scroll-margin-top:90px}
  .tool-icon-figma img{width:14px;height:21px}
  .tool-icon-ai-design img{width:21px;height:21px}
 }
+
+/* One shared blue motion treatment for the bilingual hero. */
+.hero .gradient-name,
+.hero .role span,
+.hero .stripes i{
+ background-image:linear-gradient(110deg,var(--indigo),var(--blue),var(--cyan),var(--blue),var(--indigo));
+ background-size:280% 100%;
+ background-position:0% 50%;
+ animation:hero-blue-flow 5.8s ease-in-out infinite alternate!important;
+}
+.hero .gradient-name,
+.hero .role span{
+ -webkit-background-clip:text;
+ background-clip:text;
+ -webkit-text-fill-color:transparent;
+}
+@keyframes hero-blue-flow{
+ from{background-position:0% 50%}
+ to{background-position:100% 50%}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero .gradient-name,.hero .role span,.hero .stripes i{animation:none!important;background-position:50% 50%}
+}
