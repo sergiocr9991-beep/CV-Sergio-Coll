@@ -123,6 +123,6 @@ section[id],footer[id]{scroll-margin-top:90px}
 
 
 /* Lift portrait exposure without changing the original image or crop. */
-.hero .profile-card img{filter:brightness(1.16) contrast(1.025) saturate(1.02)}
+.hero .profile-card img{filter:none}
 .hero .profile-card::after{background:linear-gradient(to bottom,transparent 65%,rgba(15,23,42,.45))}
 .hero .stripes i{background:#fff;animation:none!important}
