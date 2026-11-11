@@ -10,3 +10,34 @@ body::after{display:block!important;content:"";position:fixed;inset:0;z-index:-2
 .ink-gesture{stroke-dasharray:100 100;stroke-dashoffset:100}
 @keyframes signature-fallback{to{visibility:hidden}}
 @media(prefers-reduced-motion:reduce){#signature-intro{display:none!important}}
+
+/* Calm editorial typography, consistent across both languages. */
+.nav-links,.tagline,.pill,.project-media figcaption,.project-body p,.modal-body .meta{ text-transform:none;letter-spacing:normal; }
+.section-head h2{letter-spacing:-.045em}
+.footer-contact{column-gap:28px;row-gap:14px}
+section[id],footer[id]{scroll-margin-top:90px}
+.project-carousel-controls{display:none}
+.carousel-sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.project-card[hidden]{display:none!important}
+@media(max-width:720px){
+ #proyectos .filters{gap:8px;margin-bottom:16px}
+ #proyectos .filter{padding:10px 14px;font-size:13px}
+ #proyectos .project-carousel-controls{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin:0 0 16px}
+ .carousel-arrow{display:grid;place-items:center;width:44px;height:44px;flex:none;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--blue);cursor:pointer;box-shadow:var(--soft)}
+ .carousel-arrow svg{width:20px;height:20px}
+ .carousel-arrow:disabled{opacity:.3;cursor:default;box-shadow:none}
+ .carousel-arrow:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+ .carousel-dots{display:flex;align-items:center;justify-content:center;gap:7px;margin-right:auto}
+ .carousel-dot{width:6px;height:6px;border-radius:99px;background:#cbd5e1}
+ .carousel-dot.is-current{width:20px;background:var(--blue)}
+ #proyectos .projects{display:grid;grid-auto-flow:column;grid-auto-columns:92%;grid-template-columns:none;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:0;padding:2px 2px 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;align-items:stretch}
+ #proyectos .projects::-webkit-scrollbar{display:none}
+ #proyectos .project-card{min-width:0;scroll-snap-align:start;scroll-snap-stop:always}
+ #proyectos .projects.is-single{grid-auto-columns:100%}
+ #proyectos .project-media{height:210px}
+ #proyectos .project-body{padding:18px 14px 14px}
+ #proyectos .project-body h3{font-size:23px}
+ #proyectos .project-body span{font-size:15px;line-height:1.5;min-height:0}
+ #proyectos .project-links{padding:0 14px 16px;flex-wrap:wrap}
+ .footer h2{font-size:36px}
+}
