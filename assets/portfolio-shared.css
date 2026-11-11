@@ -86,3 +86,31 @@ section[id],footer[id]{scroll-margin-top:90px}
 @media(prefers-reduced-motion:reduce){
  .hero .gradient-name,.hero .role span,.hero .stripes i{animation:none!important;background-position:50% 50%}
 }
+
+/* Section navigation echoes the language selector with clearer labels. */
+.nav-links{
+ align-items:center;
+ gap:3px;
+ padding:4px;
+ border:1px solid rgba(148,163,184,.3);
+ border-radius:999px;
+ background:rgba(255,255,255,.85);
+ box-shadow:0 7px 22px rgba(15,23,42,.07);
+ font-size:15px;
+ font-weight:800;
+ white-space:nowrap;
+}
+.nav-links a{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-height:36px;
+ padding:8px 13px;
+ border-radius:999px;
+}
+.nav-links a:hover,.nav-links a.active{background:rgba(37,99,235,.09);color:var(--blue)}
+.nav-links a:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+@media(min-width:721px) and (max-width:1000px){
+ .nav-links{gap:1px;font-size:14px}
+ .nav-links a{padding:8px}
+}
