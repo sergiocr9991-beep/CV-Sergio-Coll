@@ -114,3 +114,10 @@ section[id],footer[id]{scroll-margin-top:90px}
  .nav-links{gap:1px;font-size:14px}
  .nav-links a{padding:8px}
 }
+
+/* Allow the final glyph to extend beyond its tight letter spacing. */
+.hero .role span{
+ display:inline-block;
+ padding-inline-end:.1em;
+ margin-inline-end:-.1em;
+}
