@@ -41,3 +41,25 @@ section[id],footer[id]{scroll-margin-top:90px}
  #proyectos .project-links{padding:0 14px 16px;flex-wrap:wrap}
  .footer h2{font-size:36px}
 }
+
+/* Tool marks stay intact inside consistent circular containers. */
+.badge.tool-badge{display:inline-flex;align-items:center;gap:9px;padding:9px 13px 9px 9px;line-height:1.35;max-width:100%}
+.tool-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#f1f5f9;border:1px solid rgba(148,163,184,.16)}
+.tool-icon img{width:22px;height:22px;object-fit:contain}
+.tool-icon-photoshop{background:#e6f4ff}
+.tool-icon-illustrator{background:#fff1df}
+.tool-icon-after-effects,.tool-icon-premiere-pro{background:#eeebff}
+.tool-icon-indesign{background:#ffe8ef}
+.tool-icon-figma{background:#fff}
+.tool-icon-figma img{width:18px;height:25px}
+.tool-icon-ai-design{background:#eaf2ff}
+.tool-icon-ai-design img{width:24px;height:24px}
+@media(max-width:720px){
+ .tools-card{padding:24px}
+ .tools-card .badges{gap:8px}
+ .badge.tool-badge{font-size:13px;gap:7px;padding:8px}
+ .tool-icon{flex-basis:28px;width:28px;height:28px}
+ .tool-icon img{width:19px;height:19px}
+ .tool-icon-figma img{width:14px;height:21px}
+ .tool-icon-ai-design img{width:21px;height:21px}
+}
