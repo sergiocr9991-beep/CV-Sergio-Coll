@@ -1,13 +1,14 @@
-# Downloadable CVs
+# Visual bilingual CV downloads
 
-The Spanish and English PDF files are generated from index.html and en/index.html. Keep the PDFs in sync after profile updates.
+The one-page PDFs preserve the supplied CV design: Montserrat typography, portrait, blue edge bands, two-column education and experience, software icons, language rings and portfolio button. Content comes from the current Spanish and English portfolio HTML.
 
-Regenerate from the repository root with Python 3 and reportlab installed:
+Regenerate from the repository root:
 
 ```powershell
+python -m pip install reportlab Pillow
 python scripts/generate_cv.py
 ```
 
-The default font directory is C:/Windows/Fonts (Arial regular and bold). An alternative directory containing arial.ttf and arialbd.ttf may be passed as the second argument, after the repository root.
+The generator uses the design assets in assets/cv/design and downloads Montserrat TTF fonts from the author's public repository on first use. The PDFs retain selectable text and six active links: phone, email, portfolio, LinkedIn, Behance and YouTube.
 
-The English PDF is also copied into CV-Sergio-Coll-English/assets/cv/ for the standalone English site. All downloads use a same-origin HTML download link and remain usable without JavaScript. The existing GTM container receives a cv_download data-layer event with language, file name, URL and placement; collecting that custom event in a reporting destination depends on its GTM configuration.
+Copy the English PDF to CV-Sergio-Coll-English/assets/cv for the standalone English site. When replacing the PDFs, update the version query on each download link to avoid a cached previous version. The download file names and analytics attributes remain stable.
