@@ -1,14 +1,13 @@
-# Visual bilingual CV downloads
+# Bilingual visual CV downloads
 
-The one-page PDFs preserve the supplied CV design: Montserrat typography, portrait, blue edge bands, two-column education and experience, software icons, language rings and portfolio button. Content comes from the current Spanish and English portfolio HTML.
+The Spanish and English one-page PDFs use the original blue visual identity with a smaller portrait/header, larger body type and leading, consistent medium-weight date capsules, and a three-column footer for software, languages and contact. Role descriptions are concise versions of the current portfolio responsibilities. Experience precedes education. Standalone AI software labels are omitted.
 
-Regenerate from the repository root:
+Regenerate with Python 3, reportlab and Pillow:
 
 ```powershell
-python -m pip install reportlab Pillow
 python scripts/generate_cv.py
 ```
 
-The generator uses the design assets in assets/cv/design and downloads Montserrat TTF fonts from the author's public repository on first use. The PDFs retain selectable text and six active links: phone, email, portfolio, LinkedIn, Behance and YouTube.
+The generator uses assets/cv/design and downloads Montserrat TTF fonts from the author's repository on first use. Review role summaries and dates when portfolio content changes. All PDFs contain selectable text and six active links: phone, email, portfolio, LinkedIn, Behance and YouTube.
 
-Copy the English PDF to CV-Sergio-Coll-English/assets/cv for the standalone English site. When replacing the PDFs, update the version query on each download link to avoid a cached previous version. The download file names and analytics attributes remain stable.
+Copy the English PDF to CV-Sergio-Coll-English/assets/cv for the standalone English site. Bump the download-link version query after replacement to avoid cached older PDFs.

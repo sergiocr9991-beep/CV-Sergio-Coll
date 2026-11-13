@@ -99,86 +99,101 @@ def create_cv(source,output,lang,assets):
         line(x+43+lw+8,t+10,x+w-26,t+10,color=MUTED)
         for k in range(3):c.setFillColor(MUTED);c.circle(x+w-18+k*9,H-t-10,2.4,fill=1,stroke=0)
     def badge(label,x,t,w):
-        round_gradient(x,t,w,16,8);text(label,x+w/2,t+2.5,7.2,'M-Bold',colors.white,'center')
+        round_gradient(x,t,w,20,8)
+        text(label,x+w/2,t+4.8,8.2,'M-Medium',colors.white,'center')
     # The blue edge bands and diagonal strokes follow the supplied originals.
     rect(0,14,484,17,BLUE)
     for i in range(6):
         x=487+i*16.5;p=c.beginPath();p.moveTo(x,H-39);p.lineTo(x+8,H-14);p.lineTo(x+17,H-14);p.lineTo(x+9,H-39);p.close();c.setFillColor(LIGHTBLUE if i%2==0 else BLUE);c.drawPath(p,fill=1,stroke=0)
     text('Sergio Coll Ramírez',32,15.2,11.7,'M-Bold',colors.white)
     text('CV / EN' if en else 'CV / ES',446,18,6.6,'M-Medium',colors.white)
-    c.setFillColor(MUTED);c.circle(28,H-61,2.8,fill=1,stroke=0);line(35,61,57,61,color=MUTED)
+    c.setFillColor(MUTED);c.circle(28,H-51,2.8,fill=1,stroke=0);line(35,51,57,51,color=MUTED)
     tagline='Graphic Designer | Digital Design & Motion Graphics' if en else 'Diseñador Gráfico | Diseño Digital & Motion Graphics'
-    text(tagline,64,51,10.8,'M-SemiBold',BLUE,tracking=.9)
+    text(tagline,64,44,10.1,'M-Medium',BLUE,tracking=.5)
     # Profile frame, with the original portrait and asymmetric clipping.
-    c.setStrokeColor(BLUE);c.setLineWidth(.85);c.roundRect(115,H-229,440,141,10,fill=0,stroke=1)
-    c.saveState();p=c.beginPath();x,t,w,h=33,80,158,198;y=H-t-h
-    p.moveTo(x,y+h);p.lineTo(x+w-77,y+h);p.curveTo(x+w-28,y+h,x+w,y+h-28,x+w,y+h-77);p.lineTo(x+w,y);p.lineTo(x+77,y);p.curveTo(x+28,y,x,y+28,x,y+77);p.close();c.clipPath(p,stroke=0,fill=0)
+    c.setStrokeColor(BLUE);c.setLineWidth(.7);c.roundRect(122,H-195,440,130,10,fill=0,stroke=1)
+    c.saveState();p=c.beginPath();x,t,w,h=33,65,98,123;y=H-t-h
+    p.moveTo(x,y+h);p.lineTo(x+w-42,y+h);p.curveTo(x+w-15,y+h,x+w,y+h-15,x+w,y+h-42);p.lineTo(x+w,y);p.lineTo(x+42,y);p.curveTo(x+15,y,x,y+15,x,y+42);p.close();c.clipPath(p,stroke=0,fill=0)
     image('X33.jpg',x,t,w,h);c.restoreState()
-    text('Professional Profile' if en else 'Perfil Profesional',207,99,15.2,'M-Bold')
+    text('Professional Profile' if en else 'Perfil Profesional',167,76,14,'M-SemiBold')
     profile=root.one(id='perfil').one(cls='profile-text')
     content=' '.join(escape(p.text()) for p in profile.find(tag='p'))
     # Keep every current profile statement, including ShowHeroes and AI workflows.
     content=content.replace('Designer en ShowHeroes Group','<b>Designer en ShowHeroes Group</b>').replace('Designer at ShowHeroes Group','<b>Designer at ShowHeroes Group</b>')
-    para(content,207,126,335,8.5,11.2,maxh=98)
+    para(content,167,101,382,8.8,11.8,maxh=86)
     # Contact strip: the original asset includes the phone/mail/location icons.
-    image('X29.png',207,244,348,35)
-    text('+57 305 761 6657',239,257,6.7,'M-Medium',colors.white)
-    text('sergiocr9991@gmail.com',342,257,6.5,'M-Medium',colors.white)
-    text('Bogotá, Colombia',474,257,6.7,'M-Medium',colors.white)
-    link('tel:+573057616657',213,247,113,29);link('mailto:sergiocr9991@gmail.com',328,247,132,29)
+    round_gradient(33,207,529,26,10)
+    text('+57 305 761 6657',48,214,8.1,'M-Medium',colors.white)
+    text('sergiocr9991@gmail.com',213,214,8.1,'M-Medium',colors.white)
+    text('Bogotá, Colombia',441,214,8.1,'M-Medium',colors.white)
+    link('tel:+573057616657',43,208,138,24);link('mailto:sergiocr9991@gmail.com',207,208,192,24)
     # Four current roles, in chronological reading order.
-    section('Professional Experience' if en else 'Experiencia laboral',296)
+    section('Professional Experience' if en else 'Experiencia laboral',249,x=33,width=529,size=14)
     jobs=root.one(id='experiencia').find(cls='job-card')
-    dates_en=['NOV 2026 - PRESENT','JAN 2025 - OCT 2026','MAY 2024 - JAN 2025','AUG 2023 - JAN 2024']
-    dates_es=['NOV 2026 - ACTUALIDAD','ENE 2025 - OCT 2026','MAY 2024 - ENE 2025','AGO 2023 - ENE 2024']
+    dates_en=['Nov 2026 - Present','Jan 2025 - Oct 2026','May 2024 - Jan 2025','Aug 2023 - Jan 2024']
+    dates_es=['Nov 2026 - Actualidad','Ene 2025 - Oct 2026','May 2024 - Ene 2025','Ago 2023 - Ene 2024']
+    # Concise wording retains each role's current responsibilities and avoids
+    # repeating generic phrases so the body can use larger type and leading.
+    briefs_en=[
+        'CTV, OLV and interactive ads: visual and audiovisual concepts, production and adaptation, motion graphics and multi-platform animation in collaboration with creative teams.',
+        'Graphics, motion graphics and audiovisual content for digital and internal channels. Promotional videos and animations with consistent branding and multi-format adaptation.',
+        'Graphic, animated and audiovisual assets for social media, commercial campaigns and email marketing, aligned with brand and communication objectives.',
+        'Graphic and audiovisual production and adaptation for digital formats, social media and internal communications; institutional campaigns, photography and animation.'
+    ]
+    briefs_es=[
+        'Creatividades para CTV, OLV y anuncios interactivos. Conceptualización, producción y adaptación visual y audiovisual; motion graphics y animación multiformato en colaboración con equipos creativos.',
+        'Gráficos, motion graphics y contenido audiovisual para canales digitales y comunicación interna. Animaciones y videos promocionales con coherencia de marca y adaptación multiformato.',
+        'Piezas gráficas, animadas y audiovisuales para redes, campañas comerciales y email marketing, alineadas con los objetivos de comunicación y la marca.',
+        'Adaptación y producción gráfica y audiovisual para formatos digitales, redes y comunicación interna; campañas institucionales, fotografía y animación.'
+    ]
     for i,job in enumerate(jobs):
-        x=[25,305][i%2];t=319 if i<2 else 435
-        badge((dates_en if en else dates_es)[i],x,t,149)
-        para(escape(job.one(tag='h3').text()),x,t+21,260,9,11,maxh=13,bold=True)
-        para(escape(job.one(tag='h4').text()),x,t+36,260,7.6,9.5,maxh=11,color=MUTED)
-        para(escape(job.one(tag='p').text()),x,t+50,260,7.8,9.8,maxh=61 if i<2 else 51)
+        x=[33,313][i%2];t=277 if i<2 else 408
+        badge((dates_en if en else dates_es)[i],x,t,166)
+        para(escape(job.one(tag='h3').text()),x,t+29,249,9.5,12,maxh=13,bold=True)
+        para(escape(job.one(tag='h4').text()),x,t+47,249,8.3,10.8,maxh=12,color=MUTED)
+        para(escape((briefs_en if en else briefs_es)[i]),x,t+66,249,8.7,12,maxh=61 if i<2 else 49)
     # Education uses the same two-column structure and date capsules.
-    section('Education' if en else 'Educación',544)
-    for edu,x in zip(root.one(id='educacion').find(cls='edu'),[25,305]):
+    section('Education' if en else 'Educación',530,x=33,width=529,size=14)
+    for edu,x in zip(root.one(id='educacion').find(cls='edu'),[33,313]):
         label=edu.one(cls='pill').text()
-        badge(label,x,571,116 if '2026' in label else 95)
+        badge(label,x,556,126 if '2026' in label else 104)
         title=edu.one(tag='h3').text();school=edu.one(tag='h4').text()
-        para(escape(title),x+127,569,137,8.1,10,maxh=31,bold=True)
-        para(escape(school),x,601,260,7.8,10,maxh=21,color=MUTED)
-        para(escape(edu.one(tag='p').text()),x,619,260,8.1,10.5,maxh=43)
+        para(escape(title),x,586,249,9.1,11.8,maxh=25,bold=True)
+        para(escape(school),x,617,249,8.4,10.8,maxh=12,color=MUTED)
+        summary=(('AI applied to creative processes, digital experiences and design innovation.' if en else 'IA aplicada a procesos creativos, experiencias digitales e innovación en diseño.') if '2026' in label else ('Visual communication, digital design, multimedia and editorial design.' if en else 'Comunicación visual, diseño digital, multimedia y editorial.'))
+        para(summary,x,638,249,8.7,11.6,maxh=24)
     # Original software icon artwork with live text labels.
-    mini_heading('Software' if en else 'Herramientas',25,661,256)
+    section('Software' if en else 'Herramientas',683,x=33,width=194,size=12.8)
     icons=Image.open(assets/'X80.png').convert('RGBA')
     crops=[(8,61,137,191),(155,61,285,191),(304,61,434,191),(8,202,137,332),(155,202,285,332),(304,202,434,332)]
     labels=['Photoshop','Illustrator','After Effects','Premiere Pro','Figma','InDesign']
     for i,(crop,label) in enumerate(zip(crops,labels)):
-        ix=51+(i%3)*78;it=687+(i//3)*59
-        c.drawImage(ImageReader(icons.crop(crop)),ix,H-it-39,39,39,mask='auto')
-        text(label,ix+19.5,it+42,7.2,'M-SemiBold',align='center')
+        ix=40+(i%3)*65;it=710+(i//3)*55
+        c.drawImage(ImageReader(icons.crop(crop)),ix,H-it-32,32,32,mask='auto')
+        text(label,ix+16,it+38,7.2,'M-Medium',align='center')
     # Language rings and portfolio/contact retain the supplied visual hierarchy.
-    mini_heading('Languages' if en else 'Idiomas',305,661,257)
-    for cx,value,label in [(385,'B2','ENGLISH' if en else 'INGLÉS'),(469,'NATIVE' if en else 'NATIVO','SPANISH' if en else 'ESPAÑOL')]:
-        image('X61.png',cx-16.5,685,33,33)
-        text(value,cx,694.5 if value=='B2' else 700.4,11 if value=='B2' else 5.4,'M-Bold',align='center')
-        text(label,cx,720,7.3,'M-SemiBold',align='center')
-    mini_heading('Contact' if en else 'Contacto',305,734,257)
-    image('X70.png',352,754,201,26)
-    text('Portfolio' if en else 'Portafolio',447,754,15.8,'M-Bold',colors.white,'center')
+    text('Languages' if en else 'Idiomas',246,683,12.8,'M-Bold')
+    for top,value,label in [(715,'B2','English' if en else 'Inglés'),(772,'Native' if en else 'Nativo','Spanish' if en else 'Español')]:
+        text(label,246,top,8.7,'M-Medium')
+        badge(value,246,top+17,75)
+    section('Contact' if en else 'Contacto',683,x=358,width=204,size=12.8)
+    round_gradient(358,714,204,32,12)
+    text('Portfolio' if en else 'Portafolio',460,720,16,'M-SemiBold',colors.white,'center')
     site='https://sergiocr9991-beep.github.io/CV-Sergio-Coll/'+('en/' if en else '')
-    link(site,352,754,201,26)
+    link(site,358,714,204,32)
     # Stacked icon-and-address rows follow the original contact reference.
     rows=[('linkedin','linkedin.com/in/sergiocr99','https://www.linkedin.com/in/sergiocr99/',colors.HexColor('#0077b5')),
           ('behance','behance.net/Sergio_cr','https://www.behance.net/Sergio_cr',colors.HexColor('#191919')),
           ('youtube','youtube.com/@sergioramirez6791','https://www.youtube.com/@sergioramirez6791/videos',colors.HexColor('#e52424'))]
     for i,(platform,address,url,fill) in enumerate(rows):
-        x,t,size=353,784+i*14,12
+        x,t,size=358,755+i*23,16
         c.setFillColor(fill);c.roundRect(x,H-t-size,size,size,2,fill=1,stroke=0)
-        if platform=='linkedin':text('in',x+6,t+.2,9.5,'M-Bold',colors.white,'center')
-        elif platform=='behance':text('Bē',x+6,t+1.2,7.7,'M-Bold',colors.white,'center')
+        if platform=='linkedin':text('in',x+8,t+.5,12,'M-Bold',colors.white,'center')
+        elif platform=='behance':text('Bē',x+8,t+1.5,10,'M-Bold',colors.white,'center')
         else:
-            c.setFillColor(colors.white);p=c.beginPath();p.moveTo(x+4.6,H-t-3);p.lineTo(x+4.6,H-t-9);p.lineTo(x+9,H-t-6);p.close();c.drawPath(p,fill=1,stroke=0)
-        text(address,x+19,t+2.0,7.2,'M-SemiBold',INK)
-        link(url,x-2,t-1,210,14)
+            c.setFillColor(colors.white);p=c.beginPath();p.moveTo(x+6,H-t-4);p.lineTo(x+6,H-t-12);p.lineTo(x+12,H-t-8);p.close();c.drawPath(p,fill=1,stroke=0)
+        text(address,x+24,t+3.0,7.6,'M-Medium',INK)
+        link(url,x-2,t-2,208,20)
     for i in range(6):
         x=6+i*16.5;p=c.beginPath();p.moveTo(x,H-841);p.lineTo(x+12,H-816);p.lineTo(x+21,H-816);p.lineTo(x+9,H-841);p.close();c.setFillColor(LIGHTBLUE if i%2 else BLUE);c.drawPath(p,fill=1,stroke=0)
     rect(112,825,W-112,17,BLUE)
