@@ -126,27 +126,27 @@ def create_cv(source,output,lang,assets):
     text('sergiocr9991@gmail.com',342,257,6.5,'M-Medium',colors.white)
     text('Bogotá, Colombia',474,257,6.7,'M-Medium',colors.white)
     link('tel:+573057616657',213,247,113,29);link('mailto:sergiocr9991@gmail.com',328,247,132,29)
-    # Education uses the same two-column structure and date capsules.
-    section('Education' if en else 'Educación',296)
-    for edu,x in zip(root.one(id='educacion').find(cls='edu'),[25,305]):
-        label=edu.one(cls='pill').text()
-        badge(label,x,323,116 if '2026' in label else 95)
-        title=edu.one(tag='h3').text();school=edu.one(tag='h4').text()
-        para(escape(title),x+127,321,137,8.1,10,maxh=31,bold=True)
-        para(escape(school),x,353,260,7.8,10,maxh=21,color=MUTED)
-        para(escape(edu.one(tag='p').text()),x,371,260,8.1,10.5,maxh=43)
     # Four current roles, in chronological reading order.
-    section('Professional Experience' if en else 'Experiencia laboral',414)
+    section('Professional Experience' if en else 'Experiencia laboral',296)
     jobs=root.one(id='experiencia').find(cls='job-card')
     dates_en=['NOV 2026 - PRESENT','JAN 2025 - OCT 2026','MAY 2024 - JAN 2025','AUG 2023 - JAN 2024']
     dates_es=['NOV 2026 - ACTUALIDAD','ENE 2025 - OCT 2026','MAY 2024 - ENE 2025','AGO 2023 - ENE 2024']
     for i,job in enumerate(jobs):
-        x=[25,305][i%2];t=437 if i<2 else 553
+        x=[25,305][i%2];t=319 if i<2 else 435
         badge((dates_en if en else dates_es)[i],x,t,149)
         para(escape(job.one(tag='h3').text()),x,t+21,260,9,11,maxh=13,bold=True)
         para(escape(job.one(tag='h4').text()),x,t+36,260,7.6,9.5,maxh=11,color=MUTED)
         para(escape(job.one(tag='p').text()),x,t+50,260,7.8,9.8,maxh=61 if i<2 else 51)
-    # Original software icon artwork, with live text labels and AI skill.
+    # Education uses the same two-column structure and date capsules.
+    section('Education' if en else 'Educación',544)
+    for edu,x in zip(root.one(id='educacion').find(cls='edu'),[25,305]):
+        label=edu.one(cls='pill').text()
+        badge(label,x,571,116 if '2026' in label else 95)
+        title=edu.one(tag='h3').text();school=edu.one(tag='h4').text()
+        para(escape(title),x+127,569,137,8.1,10,maxh=31,bold=True)
+        para(escape(school),x,601,260,7.8,10,maxh=21,color=MUTED)
+        para(escape(edu.one(tag='p').text()),x,619,260,8.1,10.5,maxh=43)
+    # Original software icon artwork with live text labels.
     mini_heading('Software' if en else 'Herramientas',25,661,256)
     icons=Image.open(assets/'X80.png').convert('RGBA')
     crops=[(8,61,137,191),(155,61,285,191),(304,61,434,191),(8,202,137,332),(155,202,285,332),(304,202,434,332)]
@@ -155,22 +155,30 @@ def create_cv(source,output,lang,assets):
         ix=51+(i%3)*78;it=687+(i//3)*59
         c.drawImage(ImageReader(icons.crop(crop)),ix,H-it-39,39,39,mask='auto')
         text(label,ix+19.5,it+42,7.2,'M-SemiBold',align='center')
-    text('AI-assisted design' if en else 'IA aplicada al diseño',157,806,7.2,'M-Medium',BLUE,'center')
     # Language rings and portfolio/contact retain the supplied visual hierarchy.
     mini_heading('Languages' if en else 'Idiomas',305,661,257)
     for cx,value,label in [(385,'B2','ENGLISH' if en else 'INGLÉS'),(469,'NATIVE' if en else 'NATIVO','SPANISH' if en else 'ESPAÑOL')]:
-        image('X61.png',cx-22,688,44,44)
-        text(value,cx,700 if value=='B2' else 706.5,13 if value=='B2' else 6.5,'M-Bold',align='center')
-        text(label,cx,736,8.2,'M-SemiBold',align='center')
-    mini_heading('Contact' if en else 'Contacto',305,757,257)
-    image('X70.png',352,778,201,33)
-    text('Portfolio' if en else 'Portafolio',447,780,18.5,'M-Bold',colors.white,'center')
+        image('X61.png',cx-16.5,685,33,33)
+        text(value,cx,694.5 if value=='B2' else 700.4,11 if value=='B2' else 5.4,'M-Bold',align='center')
+        text(label,cx,720,7.3,'M-SemiBold',align='center')
+    mini_heading('Contact' if en else 'Contacto',305,734,257)
+    image('X70.png',352,754,201,26)
+    text('Portfolio' if en else 'Portafolio',447,754,15.8,'M-Bold',colors.white,'center')
     site='https://sergiocr9991-beep.github.io/CV-Sergio-Coll/'+('en/' if en else '')
-    link(site,352,778,201,33)
-    # Social links remain selectable and clickable under the portfolio button.
-    text('LinkedIn',353,814,7.1,'M-SemiBold',BLUE);link('https://www.linkedin.com/in/sergiocr99/',351,812,59,12)
-    text('Behance',430,814,7.1,'M-SemiBold',BLUE);link('https://www.behance.net/Sergio_cr',428,812,58,12)
-    text('YouTube',505,814,7.1,'M-SemiBold',BLUE);link('https://www.youtube.com/@sergioramirez6791/videos',503,812,57,12)
+    link(site,352,754,201,26)
+    # Stacked icon-and-address rows follow the original contact reference.
+    rows=[('linkedin','linkedin.com/in/sergiocr99','https://www.linkedin.com/in/sergiocr99/',colors.HexColor('#0077b5')),
+          ('behance','behance.net/Sergio_cr','https://www.behance.net/Sergio_cr',colors.HexColor('#191919')),
+          ('youtube','youtube.com/@sergioramirez6791','https://www.youtube.com/@sergioramirez6791/videos',colors.HexColor('#e52424'))]
+    for i,(platform,address,url,fill) in enumerate(rows):
+        x,t,size=353,784+i*14,12
+        c.setFillColor(fill);c.roundRect(x,H-t-size,size,size,2,fill=1,stroke=0)
+        if platform=='linkedin':text('in',x+6,t+.2,9.5,'M-Bold',colors.white,'center')
+        elif platform=='behance':text('Bē',x+6,t+1.2,7.7,'M-Bold',colors.white,'center')
+        else:
+            c.setFillColor(colors.white);p=c.beginPath();p.moveTo(x+4.6,H-t-3);p.lineTo(x+4.6,H-t-9);p.lineTo(x+9,H-t-6);p.close();c.drawPath(p,fill=1,stroke=0)
+        text(address,x+19,t+2.0,7.2,'M-SemiBold',INK)
+        link(url,x-2,t-1,210,14)
     for i in range(6):
         x=6+i*16.5;p=c.beginPath();p.moveTo(x,H-841);p.lineTo(x+12,H-816);p.lineTo(x+21,H-816);p.lineTo(x+9,H-841);p.close();c.setFillColor(LIGHTBLUE if i%2 else BLUE);c.drawPath(p,fill=1,stroke=0)
     rect(112,825,W-112,17,BLUE)
